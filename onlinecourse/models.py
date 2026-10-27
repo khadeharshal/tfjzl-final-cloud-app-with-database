@@ -96,15 +96,12 @@ class Enrollment(models.Model):
 
 
 class Question(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
     question_text = models.CharField(max_length=200)
     grade = models.IntegerField(default=50)
 
     def __str__(self):
-        return self.question_text
-
-    @property
-    def content(self):
         return self.question_text
 
     def is_get_score(self, selected_ids):
@@ -122,10 +119,6 @@ class Choice(models.Model):
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.choice_text
-
-    @property
-    def content(self):
         return self.choice_text
 
 

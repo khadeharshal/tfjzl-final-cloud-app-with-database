@@ -145,6 +145,7 @@ def show_exam_result(request, course_id, submission_id):
 
     context['course'] = course
     context['grade'] = total_score
+    context['possible'] = possible_score
     context['possible_score'] = possible_score
     context['choices'] = choices
     context['selected_ids'] = selected_ids
